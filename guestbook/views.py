@@ -27,7 +27,7 @@ def main_page(request):
         url = users.create_login_url(request.get_full_path())
         url_linktext = 'Login'
         
-    # make template
+    # set up values for use in template
     template_values = {
         'greetings': greetings,
         'guestbook_name': guestbook_name,
@@ -44,10 +44,11 @@ def sign_post(request):
         # get DB
         greeting = Greeting(parent=guestbook_key)
     
+        # set author
         if users.get_current_user():
             greeting.author = users.get_current_user().nickname()
     
-        # get content
+        # set content
         greeting.content = request.POST.get('content')
         # put to DB
         greeting.put()

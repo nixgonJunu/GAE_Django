@@ -1,6 +1,7 @@
 from google.appengine.ext import db
 
 class Greeting(db.Model):
+    # design DB, db is appengine datastore
     """Models an individual Guestbook entry with an author, content, and date."""
     author = db.StringProperty()
     content = db.StringProperty(multiline=True)
